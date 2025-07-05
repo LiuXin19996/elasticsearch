@@ -6,12 +6,14 @@
  */
 package org.elasticsearch.xpack.watcher.test;
 
+import org.elasticsearch.cluster.project.TestProjectResolvers;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.script.MockScriptEngine;
 import org.elasticsearch.script.MockScriptPlugin;
 import org.elasticsearch.script.ScriptContext;
 import org.elasticsearch.script.ScriptEngine;
 import org.elasticsearch.script.ScriptService;
+import org.elasticsearch.test.ESTestCase;
 import org.elasticsearch.xpack.watcher.Watcher;
 import org.elasticsearch.xpack.watcher.condition.WatcherConditionScript;
 import org.elasticsearch.xpack.watcher.transform.script.WatcherTransformScript;
@@ -74,6 +76,12 @@ public abstract class WatcherMockScriptPlugin extends MockScriptPlugin {
         Map<String, ScriptEngine> engines = new HashMap<>();
         engines.put(MockScriptEngine.NAME, new MockScriptEngine(MockScriptEngine.NAME, scripts, CONTEXT_COMPILERS));
         Map<String, ScriptContext<?>> contexts = CONTEXTS.stream().collect(Collectors.toMap(o -> o.name, Function.identity()));
-        return new ScriptService(Settings.EMPTY, engines, contexts, () -> 1L);
+        return new ScriptService(
+            Settings.EMPTY,
+            engines,
+            contexts,
+            () -> 1L,
+            TestProjectResolvers.singleProject(ESTestCase.randomProjectIdOrDefault())
+        );
     }
 }
