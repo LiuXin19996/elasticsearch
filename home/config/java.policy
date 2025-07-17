@@ -1,0 +1,6 @@
+grant {
+    permission javax.management.MBeanTrustPermission "register";
+    permission java.lang.RuntimePermission "createClassLoader";
+    permission java.lang.RuntimePermission "setContextClassLoader";
+    permission java.lang.RuntimePermission "getClassLoader";
+};

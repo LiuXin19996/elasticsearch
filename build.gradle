@@ -28,6 +28,9 @@ import static org.elasticsearch.gradle.util.GradleUtils.maybeConfigure
 
 buildscript {
   repositories {
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public/"}
+    maven { url "https://maven.aliyun.com/nexus/content/repositories/jcenter"}
+    maven { url "https://repo.springsource.org/plugins-release"}
     mavenCentral()
   }
 }
@@ -550,9 +553,9 @@ tasks.register("buildReleaseArtifacts").configure {
   description = 'Builds all artifacts required for release manager'
 
   dependsOn allprojects.findAll {
-    it.path.startsWith(':distribution:docker') == false && 
-    it.path.startsWith(':ml-cpp') == false && 
-    it.path.startsWith(':distribution:bwc') == false && 
+    it.path.startsWith(':distribution:docker') == false &&
+    it.path.startsWith(':ml-cpp') == false &&
+    it.path.startsWith(':distribution:bwc') == false &&
     it.path.startsWith(':test:fixture') == false
   }
     .collect { GradleUtils.findByName(it.tasks, 'assemble') }

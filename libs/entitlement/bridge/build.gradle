@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import org.elasticsearch.gradle.internal.precommit.CheckForbiddenApisTask
+//import org.elasticsearch.gradle.internal.precommit.CheckForbiddenApisTask
 
 apply plugin: 'elasticsearch.build'
 apply plugin: 'elasticsearch.mrjar'
@@ -23,6 +23,6 @@ tasks.named('jar').configure {
 // The bridge only uses things within the jdk, but the checker
 // needs to have many forbidden apis in its signatures. Suppressing
 // each use of forbidden apis would be tedious and not useful.
-tasks.withType(CheckForbiddenApisTask).configureEach {
-  enabled = false
-}
+//tasks.withType(CheckForbiddenApisTask).configureEach {
+//  enabled = false
+//}
