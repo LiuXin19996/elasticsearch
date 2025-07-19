@@ -29,7 +29,7 @@ if (useDra == false) {
             // no repository metadata, look directly for the artifact
             artifact()
           }
-          localRepo = '/'
+          localRepo = 'E:/downloads/'
           if (localRepo) {
             url localRepo
             patternLayout {
