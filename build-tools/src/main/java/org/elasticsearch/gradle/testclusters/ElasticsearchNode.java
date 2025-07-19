@@ -1118,11 +1118,11 @@ public class ElasticsearchNode implements TestClusterConfiguration {
                 LOGGER.lifecycle("\n=== {} `{}` ===", description, this);
             }
             if (errorsAndWarnings.isEmpty() == false) {
-                LOGGER.lifecycle("\nÂ»    â†“ errors and warnings from " + from + " â†“");
+                LOGGER.lifecycle("\n?    ¡ý errors and warnings from " + from + " ¡ý");
                 errorsAndWarnings.forEach((key, pair) -> {
-                    LOGGER.lifecycle("Â» " + pair.left().replace("\n", "\nÂ»  "));
+                    LOGGER.lifecycle("? " + pair.left().replace("\n", "\n?  "));
                     if (pair.right() > 1) {
-                        LOGGER.lifecycle("Â»   â†‘ repeated " + pair.right() + " times â†‘");
+                        LOGGER.lifecycle("?   ¡ü repeated " + pair.right() + " times ¡ü");
                     }
                 });
             }
@@ -1130,10 +1130,10 @@ public class ElasticsearchNode implements TestClusterConfiguration {
             ring.removeIf(line -> MESSAGES_WE_DONT_CARE_ABOUT.stream().anyMatch(line::contains));
 
             if (ring.isEmpty() == false) {
-                LOGGER.lifecycle("Â»   â†“ last " + TAIL_LOG_MESSAGES_COUNT + " non error or warning messages from " + from + " â†“");
+                LOGGER.lifecycle("?   ¡ý last " + TAIL_LOG_MESSAGES_COUNT + " non error or warning messages from " + from + " ¡ý");
                 ring.forEach(message -> {
                     if (errorsAndWarnings.containsKey(normalizeLogLine(message)) == false) {
-                        LOGGER.lifecycle("Â» " + message.replace("\n", "\nÂ»  "));
+                        LOGGER.lifecycle("? " + message.replace("\n", "\n?  "));
                     }
                 });
             }

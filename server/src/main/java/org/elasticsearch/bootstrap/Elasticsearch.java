@@ -72,6 +72,13 @@ class Elasticsearch {
         try {
             initPhase2(bootstrap);
             initPhase3(bootstrap);
+
+            String esHome = "home";
+            System.setProperty("es.path.home", esHome); // 设置 Elasticsearch 的【根】目录
+            System.setProperty("es.path.conf", esHome+"/config"); // 设置 Elasticsearch 的【配置】目录
+            System.setProperty("log4j2.disable.jmx", "true"); // 禁用 log4j2 的 JMX 监控，避免报错
+            System.setProperty("java.security.policy", esHome+"/config/java.policy"); // 设置 Java 的安全策略
+
         } catch (NodeValidationException e) {
             bootstrap.exitWithNodeValidationException(e);
         } catch (Throwable t) {

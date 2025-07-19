@@ -16,6 +16,7 @@ import org.gradle.jvm.toolchain.JavaToolchainDownload;
 import org.gradle.jvm.toolchain.JavaToolchainRequest;
 import org.gradle.jvm.toolchain.JvmVendorSpec;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
@@ -81,14 +82,16 @@ public abstract class AdoptiumJdkToolchainResolver extends AbstractCustomJavaToo
     }
 
     private URI resolveDownloadURI(AdoptiumVersionRequest request, String version) {
-        return URI.create(
-            "https://api.adoptium.net/v3/binary/version/"
-                + version
-                + "/"
-                + request.platform
-                + "/"
-                + request.arch
-                + "/jdk/hotspot/normal/eclipse?project=jdk"
+//        return URI.create(
+//            "https://api.adoptium.net/v3/binary/version/"
+//                + version
+//                + "/"
+//                + request.platform
+//                + "/"
+//                + request.arch
+//                + "/jdk/hotspot/normal/eclipse?project=jdk"
+                return URI.create(
+                    "https://mirrors.tuna.tsinghua.edu.cn/Adoptium/21/jdk/x64/windows/OpenJDK21U-jdk_x64_windows_hotspot_21.0.7_6.zip"
         );
     }
 

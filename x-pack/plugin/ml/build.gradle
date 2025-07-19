@@ -29,20 +29,24 @@ if (useDra == false) {
             // no repository metadata, look directly for the artifact
             artifact()
           }
+          localRepo = '/'
           if (localRepo) {
             url localRepo
             patternLayout {
-              artifact "maven/[orgPath]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"
+//              artifact "maven/[orgPath]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"
+              artifact '/ml-cpp-8.13.0-SNAPSHOT.zip'
             }
           } else {
-            url "https://artifacts-snapshot.elastic.co/"
+            url "https://prelert-artifacts.s3.amazonaws.com/"
             patternLayout {
               if (VersionProperties.isElasticsearchSnapshot()) {
-                artifact '/ml-cpp/[revision]/downloads/ml-cpp/[module]-[revision]-[classifier].[ext]'
+//                artifact '/ml-cpp/[revision]/downloads/ml-cpp/[module]-[revision]-[classifier].[ext]'
+                artifact 'ml-cpp-8.13.0-SNAPSHOT.zip'
               } else {
                 // When building locally we always use snapshot artifacts even if passing `-Dbuild.snapshot=false`.
                 // Release builds are always done with a local repo.
-                artifact '/ml-cpp/[revision]-SNAPSHOT/downloads/ml-cpp/[module]-[revision]-SNAPSHOT-[classifier].[ext]'
+//                artifact '/ml-cpp/[revision]-SNAPSHOT/downloads/ml-cpp/[module]-[revision]-SNAPSHOT-[classifier].[ext]'
+                artifact '/maven/org/elasticsearch/ml/ml-cpp/8.13.0-SNAPSHOT/ml-cpp-8.13.0-SNAPSHOT.zip'
               }
             }
           }

@@ -180,4 +180,13 @@ grant {
   permission java.io.FilePermission "/proc/self/cgroup", "read";
   permission java.io.FilePermission "/sys/fs/cgroup/-", "read";
 
+  permission javax.management.MBeanTrustPermission "register";
+  permission java.lang.RuntimePermission "createClassLoader";
+  permission java.lang.RuntimePermission "setContextClassLoader";
+  permission java.lang.RuntimePermission "getClassLoader";
+  permission java.util.PropertyPermission "es.path.home", "write";
+  permission java.util.PropertyPermission "es.path.conf", "write";
+  permission java.util.PropertyPermission "log4j2.disable.jmx", "write";
+  permission java.util.PropertyPermission "java.security.policy", "write";
+
 };
